@@ -1,8 +1,8 @@
 <?php
 
-Autoloader::map(
+Autoloader::map(array(
 	'Recaptcha\\Recaptcha' =>  __DIR__ . DS . 'recaptcha' . EXT
-);
+));
 
 Laravel\Validator::register('validate_recaptcha', function($attribute, $value, $parameters)
 {
