@@ -26,7 +26,7 @@ Here is an example validation method:
 
 ~~~~
 $rules = array(
-	'recaptcha_response_field' => 'recaptcha:RECAPTCHA_PRIVATE_KEY'
+	'recaptcha_response_field' => 'required|recaptcha:RECAPTCHA_PRIVATE_KEY'
 );
 
 $validator = Validator::make($input, $rules);
