@@ -19,6 +19,7 @@ Add the following to your **application/bundles.php** file:
 ~~~~
 
 reCATPCHA registers a validation rule (validate_recaptcha) to your custom validators in its **start.php** file.
+reCATPCHA also registers a HTML macro to your custom macros in its **start.php** file.
 
 ## Usage
 This bundle is designed to be used with Laravels validator but it can just as easily be used as a standalone class.    
@@ -49,6 +50,21 @@ if($recaptcha->is_valid)
 	// reCAPTCHA was entered correctly
 }
 ~~~~
+
+Inserting the reCATPCHA HTML into your from is also easy, it can be done with the Form class.
+```
+<div class="control-group">
+	<label class="control-label" for="recaptcha_challenge_field">&nbsp;</label>
+	<div class="controls">
+		<!-- reCAPTCHA -->
+		{{ Form::recaptcha(PUBLIC_KEY,$captchaErrors, array('theme' => 'clean')) }}
+		<!-- reCAPTCHA -->
+	</div>
+</div>
+```
+
+The third argument is optional and allows you to customize reCAPTCHA. Treat it like you would treat the `RecaptchaOptions` variable as described in the [customization section of the reCAPTCHA documentation](https://developers.google.com/recaptcha/docs/customization).
+
 
 ## Further Information
 This bundle just uses the PHP class from the reCAPTCHA library. If you have any further questions try looking through the [reCAPTCHA documentation](https://developers.google.com/recaptcha/intro) on the Google Developers website.
