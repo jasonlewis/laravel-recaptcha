@@ -10,3 +10,15 @@ Laravel\Validator::register('recaptcha', function($attribute, $value, $parameter
 
 	return $recaptcha->is_valid;
 });
+
+Laravel\Form::macro('recaptcha', function($publicKey, $captchaError = null, $recaptchaOptions = array())
+{
+	$html = "";
+	if(count($recaptchaOptions) > 0)
+	{
+		$html .= '<script>var RecaptchaOptions = '. json_encode($recaptchaOptions) .'</script>';
+	}
+	$html .= Recaptcha\Recaptcha::recaptcha_get_html($publicKey, $captchaError);
+
+	return $html;
+});
